@@ -1,6 +1,6 @@
 DOCKER_COMPOSE := docker-compose
 
-.PHONY: up down logs app db
+.PHONY: up down logs app db migrate
 
 up:
 	$(DOCKER_COMPOSE) up -d --build
@@ -16,3 +16,6 @@ app:
 
 db:
 	$(DOCKER_COMPOSE) exec db mysql -uroot -proot develop
+
+migrate:
+	goose up
